@@ -1,0 +1,278 @@
+@font-face {
+  font-family: 'mychemicalromance';
+  src: url('font/mychemicalromance.woff2') format('woff2'),
+       url('font/mychemicalromance.woff') format('woff'),
+       url('font/mychemicalromance.ttf')  format('truetype');
+}
+
+body, html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(to bottom, #666, #606060);
+	color: white;
+	font-family: Arial;
+}
+
+.container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width:  500px;
+	height: 220px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.card {
+	width: 120px;
+	height: 220px;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 80%);
+	transition: all 0.2s cubic-bezier(0.42, 0, 0.13, 2.02);
+	position: relative;
+	left: 0;
+	top: 0;
+	transform: rotate(0deg);
+	transform-origin: 0 100%;
+	flex: none;
+	border: 1px solid rgba(40, 40, 40, 0.9);
+	will-change: transform;
+	z-index: 2;
+}
+
+.card:hover,
+.card:focus {
+	transform: rotate(4deg);
+}
+
+.card:nth-child(1):hover,
+.card:nth-child(1):focus {
+	transform: rotate(-4deg);
+}
+
+.card:nth-child(2) {
+	transform-origin: 50% 50%;
+}
+
+.card:nth-child(3) {
+	transform-origin: 100% 100%;
+}
+
+.shuffle .card:nth-child(1) {
+	left: 166px;
+}
+
+.shuffle .card:nth-child(2) {
+	left: 0px;
+}
+
+.shuffle .card:nth-child(3) {
+	left: -166px;
+}
+
+.button {
+	padding: 5px 8px;
+	border-radius: 6px;
+	border: 1px solid #eee;
+	background: transparent;
+	color: #eee;
+	cursor: pointer;
+	position: absolute;
+	bottom: 25%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 40px;
+	width: 120px;
+	font-size: 16px;
+	background-image: transparent;
+	background-repeat: no-repeat;
+	background-position: -45px 0;
+	transition: background-position 1.5s ease-in, transform 0.13s cubic-bezier(0.42, 0, 0.13, 2.02);
+}
+
+.button.loading {
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3));
+	width: 40px;
+	border-radius: 50%;
+	background-position: 0px 0px;
+	cursor: default;
+}
+
+.button.loading img {
+	margin-top: 2px;
+}
+
+.button:not(.loading):active {
+	background: rgba(200, 200, 200, 0.1);
+}
+
+.button.button--focus {
+	border-color: #cddc39;
+	color: #cddc39;
+	transform: translate(-50%, -50%) scale(1.3);
+}
+
+.button[disabled=true] {
+	border: 1px solid #AAA;
+	color: #AAA;
+	cursor: default;
+}
+
+.card.chosen {
+	transform: rotate(4deg);
+	top: -240px;
+}
+
+.card:nth-child(1).chosen {
+	transform: rotate(-4deg);
+}
+
+.ball-target {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: radial-gradient(circle at 10px 10px, #ff5722, #000);
+	box-shadow: 0px 0px 9px -5px rgba(0, 0, 0, 0.64);
+	position: absolute;
+	z-index: 1;
+}
+
+.ball-target .shadow {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
+	transform: rotateX(90deg) translateZ(-17px);
+	z-index: -1;
+}
+
+.sign {
+	color: #AAA;
+	position: absolute;
+	bottom: 16px;
+	right: 16px;
+}
+
+.themes {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.theme {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: tomato;
+	margin: 4px;
+	cursor: pointer;
+	transform: rotate(-45deg);
+}
+
+.default {
+	background: linear-gradient(to bottom, #666, #606060);
+}
+
+.dark-city {
+	background: linear-gradient(to bottom, #607d8b, #263238);
+}
+
+.dark-city .button,
+.dark-city .card {
+	border-radius: 0;
+}
+
+.black-parade {
+	background: linear-gradient(to bottom, #312c33, #6e6865);
+}
+
+.black-parade .card {
+	background-color: #000000;
+	background-image: url('black-parade.png');
+	background-position: center center;
+	background-size: contain;
+}
+
+.black-parade .button {
+	font-family: 'mychemicalromance';
+	border-width: 2px !important;
+}
+
+.black-parade .button:not(.loading) {
+	padding-top: 9px;
+}
+
+.black-parade .sign {
+	text-transform: uppercase;
+	font-family: 'mychemicalromance';
+	letter-spacing: 7px;
+} 
+
+.sunset {
+	background: linear-gradient(to bottom, #ff5722, #3f51b5);
+}
+
+.sunset .card {
+	border-top-right-radius: 50%;
+	border-top-left-radius: 50%;
+	border-bottom-right-radius: 50%;
+	border-bottom-left-radius: 50%;
+	border-radius: 50%;
+	height: 150px;
+	width: 150px;
+	background-image: linear-gradient(to bottom, #ffeb3b, #fbc02d);
+}
+
+.sunset .card.right, .sunset .card.wrong { 
+	background-image: linear-gradient(to bottom, #ffeb3b66, #fbc02d66);
+}
+
+.muddy-waters {
+	background: linear-gradient(to bottom, #009688, #795548);
+}
+
+.muddy-waters .card {
+	border-top-left-radius: 50%;
+	border-bottom-right-radius: 50%;
+	border-top-right-radius: 50%;
+	border-bottom-left-radius: 120%;
+	width: 122px;
+	height: 122px;
+}
+
+.mirkwood {
+	background: linear-gradient(to bottom, #1b5e20, #799955);
+}
+
+.mirkwood .card {
+	border-top-left-radius: 100%;
+	border-bottom-right-radius: 100%;
+}
+
+.mirkwood .button {
+	border-color: #d9f3ca;
+	color: #d9f3ca;
+}
+
+.mirkwood .button.loading {
+	background-image: linear-gradient(to right, rgba(190, 255, 190, 0.3), rgba(190, 255, 190, 0.3));
+}
+
+.mirkwood .button.button--focus {
+	border-color: #cddc39;
+	color: #cddc39;
+}
+
+.right {
+	background-color: #8bc34a !important;
+}
+
+.wrong{
+	background-color: #f44336 !important;
+}

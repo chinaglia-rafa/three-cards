@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'mychemicalromance';
+  src: url('/path-to/mychemicalromance.woff2') format('woff2'),
+       url('/path-to/mychemicalromance.woff') format('woff'),
+       url('/path-to/mychemicalromance.ttf')  format('truetype');
+}
+
+body {
+  font-family: 'mychemicalromance', sans-serif;
+}
